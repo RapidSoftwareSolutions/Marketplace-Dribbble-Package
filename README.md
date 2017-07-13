@@ -20,6 +20,7 @@ redirect_uri - The URL in your application where users will be sent after author
 scope - A space separated list of scopes.
 state - An unguessable random string. It is used to protect against cross-site request forgery attacks.
 ```
+4. Call ```getAccessToken``` block.
 ## Custom datatypes:
  |Datatype|Description|Example
  |--------|-----------|----------
@@ -28,7 +29,7 @@ state - An unguessable random string. It is used to protect against cross-site r
  |List|Simple array|```["123", "sample"]```
  |Select|String with predefined values|```sample```
  |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
-4. Call ```getAccessToken``` block.
+
 
 ## Dribbble.getAccessToken
 Returns access token.
