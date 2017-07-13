@@ -1,0 +1,1591 @@
+{
+  "package": "Dribbble",
+  "tagline": "Dribbble API",
+  "description": "Dribbble - Show and tell for designers",
+  "image": "https://logo.clearbit.com/dribbble.com",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Dribbble-Package",
+  "keywords": [
+    "API",
+    "designers"
+  ],
+  "accounts": {
+    "domain": "dribbble.com",
+    "credentials": [
+      "clientId",
+      "clientSecret",
+      "code",
+      "accessToken"
+    ]
+  },
+  "blocks": [
+    {
+    "name": "getAccessToken",
+    "description": "Returns access token.",
+    "args": [{
+      "name": "clientId",
+      "type": "credentials",
+      "info": "The client ID you received from Dribbble when you registered.",
+      "required": true
+    },
+      {
+        "name": "clientSecret",
+        "type": "credentials",
+        "info": "The client secret you received from Dribbble when you registered.",
+        "required": true
+      },
+      {
+        "name": "code",
+        "type": "credentials",
+        "info": "The OAuth verification code acquired via OAuth's web authentication protocol.",
+        "required": true
+      },
+      {
+        "name": "redirectUri",
+        "type": "String",
+        "info": "The URL in your application where users will be sent after authorization.",
+        "required": true
+      }
+    ],
+    "callbacks": [{
+      "name": "error",
+      "info": "Error"
+    }, {
+      "name": "success",
+      "info": "Success"
+    }]
+  },
+
+    {
+      "name": "getSingleBucket",
+      "description": "Get a bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createBucket",
+      "description": "Creating a bucket requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The name of the bucket.",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A description of the bucket.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateBucket",
+      "description": "Updating a bucket requires the user to be authenticated with the write scope. The authenticated user must also own the bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The name of the bucket.",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A description of the bucket.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteBucket",
+      "description": "Deleting a bucket requires the user to be authenticated with the write scope. The authenticated user must also own the bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getBucketShots",
+      "description": "List shots for a bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "addShotToBucket",
+      "description": "Adding a shot to a bucket requires the user to be authenticated with the write scope. The authenticated user must also own the bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        },
+        {
+          "name": "shotId",
+          "type": "Number",
+          "info": "The ID of the shot to add.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "removeShotFromBucket",
+      "description": "Removing a shot to a bucket requires the user to be authenticated with the write scope. The authenticated user must also own the bucket.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Bucket id",
+          "required": true
+        },
+        {
+          "name": "shotId",
+          "type": "Number",
+          "info": "The ID of the shot to remove.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getSingleProject",
+      "description": "Get a project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Project id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getProjectShots",
+      "description": "List shots for a project.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Project id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getShots",
+      "description": "List shots.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "list",
+          "type": "Select",
+          "options": ["animated", "attachments", "debuts", "playoffs", "rebounds", "teams"],
+          "info": "Limit the results to a specific type with the following possible values: animated, attachments, debuts, playoffs, rebounds, teams",
+          "required": false
+        },
+        {
+          "name": "timeframe",
+          "type": "Select",
+          "options": ["week", "month", "year", "ever"],
+          "info": "A period of time to limit the results to with the following possible values: week, month, year, ever",
+          "required": false
+        },
+        {
+          "name": "date",
+          "type": "DatePicker",
+          "info": "Limit the timeframe to a specific date, week, month, or year.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": ["comments", "recent", "views"],
+          "info": "The sort field with the following possible values: comments, recent, views",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleShot",
+      "description": "Get a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createShot",
+      "description": "Creating a shot requires the user to be authenticated with the upload scope. The authenticated user must also be a player or team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "The title of the shot.",
+          "required": true
+        },
+        {
+          "name": "image",
+          "type": "File",
+          "info": "The image file. It must be exactly 400x300 or 800x600, no larger than eight megabytes, and be a GIF, JPG, or PNG.",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A description of the shot.",
+          "required": false
+        },
+        {
+          "name": "tags",
+          "type": "List",
+          "info": "Tags for the shot.",
+          "required": false,
+          "structure": {
+            "name": "tag",
+            "type": "String",
+            "info": "Tag."
+          }
+        },
+        {
+          "name": "teamId",
+          "type": "String",
+          "info": "An ID of a team to associate the shot with. The authenticated user must either be a member of the team or be authenticated as the same team.",
+          "required": false
+        },
+        {
+          "name": "reboundSourceId",
+          "type": "Number",
+          "info": "An ID of a shot that the new shot is a rebound of. The shot must be reboundable and by a user not blocking the authenticated user.",
+          "required": false
+        },
+        {
+          "name": "lowProfile",
+          "type": "Boolean",
+          "info": "Specify true if the shot is Low Profile.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateShot",
+      "description": "Updating a shot requires the user to be authenticated with the upload scope. The authenticated user must also own the shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "The title of the shot.",
+          "required": true
+        },
+        {
+          "name": "image",
+          "type": "File",
+          "info": "The image file. It must be exactly 400x300 or 800x600, no larger than eight megabytes, and be a GIF, JPG, or PNG.",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A description of the shot.",
+          "required": false
+        },
+        {
+          "name": "tags",
+          "type": "List",
+          "info": "Tags for the shot.",
+          "required": false,
+          "structure": {
+            "name": "tag",
+            "type": "String",
+            "info": "Tag."
+          }
+        },
+        {
+          "name": "teamId",
+          "type": "String",
+          "info": "An ID of a team to associate the shot with. The authenticated user must either be a member of the team or be authenticated as the same team.",
+          "required": false
+        },
+        {
+          "name": "reboundSourceId",
+          "type": "Number",
+          "info": "An ID of a shot that the new shot is a rebound of. The shot must be reboundable and by a user not blocking the authenticated user.",
+          "required": false
+        },
+        {
+          "name": "lowProfile",
+          "type": "Boolean",
+          "info": "Specify true if the shot is Low Profile.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteShot",
+      "description": "Deleting a shot requires the user to be authenticated with the upload scope. The authenticated user must also own the shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getShotAttachments",
+      "description": "List attachments for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createAttachment",
+      "description": "Creating an attachment requires the user to be authenticated with the upload scope. The authenticated user must own the shot and be a pro, a team, or a member of a team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "file",
+          "type": "File",
+          "info": "The attachment file. It must be no larger than 10 megabytes.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleAttachment",
+      "description": "Get a single attachment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "attachmentId",
+          "type": "String",
+          "info": "Attachment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteAttachment",
+      "description": "Deleting an attachment requires the user to be authenticated with the upload scope. The authenticated user must also own the attachment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }, {
+          "name": "attachmentId",
+          "type": "String",
+          "info": "Attachment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getShotBuckets",
+      "description": "List buckets for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getShotComments",
+      "description": "List comments for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getCommentLikes",
+      "description": "List likes for a comment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createComment",
+      "description": "Creating a comment requires the user to be authenticated with the comment scope. The authenticated user must also be a player or team.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "info": "The contents of the comment.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleComment",
+      "description": "Get a single comment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateComment",
+      "description": "Updating a comment requires the user to be authenticated with the comment scope. The authenticated user must also own the comment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "info": "The contents of the comment.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "deleteComment",
+      "description": "Deleting a comment requires the user to be authenticated with the comment scope. The authenticated user must also own the comment.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkYouLikeComment",
+      "description": "Checking for a comment like requires the user to be authenticated.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "likeComment",
+      "description": "Liking a comment requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "unlikeComment",
+      "description": "Unliking a comment requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Comment id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getShotLikes",
+      "description": "List the likes for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkYouLikeShot",
+      "description": "Checking for a shot like requires the user to be authenticated.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "likeShot",
+      "description": "Liking a shot requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "unlikeShot",
+      "description": "Unliking a shot requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getShotProjects",
+      "description": "List projects for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getShotRebounds",
+      "description": "List rebounds for a shot.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Shot id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getTeamMembers",
+      "description": "List a team’s members.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Team id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getTeamShots",
+      "description": "List shots by the team and team members.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Team id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+
+    {
+      "name": "getSingleUser",
+      "description": "Get a single user.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUserBuckets",
+      "description": "List a user’s buckets.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUserFollowers",
+      "description": "List a user’s followers.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUsersFollowedByUser",
+      "description": "List who a user is following.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getShotsForUsersFollowedByUser",
+      "description": "Listing shots from followed users requires the user to be authenticated with the public scope. Also note that you can not retrieve more than 600 results, regardless of the number requested per page.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      }],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkYouFollowingUser",
+      "description": "Check if you are following a user.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkOneUserFollowingAnother",
+      "description": "Check if one user is following another.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        },
+        {
+          "name": "targetUser",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "followUser",
+      "description": "Following a user requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "unfollowUser",
+      "description": "Unfollowing a user requires the user to be authenticated with the write scope.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getShotLikesForUser",
+      "description": "List shot likes for a user.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUserProjects",
+      "description": "List a user’s projects.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUserShots",
+      "description": "List a user’s shots.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getUserTeams",
+      "description": "List a user’s teams.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "User id",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "createJob",
+      "description": "Create a job.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "organizationName",
+          "type": "String",
+          "info": "The name of the organization the position is with.",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "The title of the job position.",
+          "required": true
+        },
+        {
+          "name": "location",
+          "type": "String",
+          "info": "The physical location of the position (e.g. “Boston” or “Anywhere”).",
+          "required": true
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "info": "An absolute URL to the full details of the job listing.",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "String",
+          "info": "true if you want the job to be published immediately.",
+          "required": false
+        },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "The integer id or string login of the team that you want associated with the job.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "updateJob",
+      "description": "Update a job.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "jobId",
+          "type": "String",
+          "info": "Id of the updated job.",
+          "required": true
+        },
+        {
+          "name": "organizationName",
+          "type": "String",
+          "info": "The name of the organization the position is with.",
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "info": "The title of the job position.",
+          "required": false
+        },
+        {
+          "name": "location",
+          "type": "String",
+          "info": "The physical location of the position (e.g. “Boston” or “Anywhere”).",
+          "required": false
+        },
+        {
+          "name": "url",
+          "type": "String",
+          "info": "An absolute URL to the full details of the job listing.",
+          "required": false
+        },
+        {
+          "name": "active",
+          "type": "String",
+          "info": "true if you want the job to be published immediately.",
+          "required": false
+        },
+        {
+          "name": "team",
+          "type": "String",
+          "info": "The integer id or string login of the team that you want associated with the job.",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getSingleJob",
+      "description": "Show a job.",
+      "args": [{
+        "name": "accessToken",
+        "type": "credentials",
+        "info": "You dribbble access token",
+        "required": true
+      },
+        {
+          "name": "jobId",
+          "type": "String",
+          "info": "Id of the updated job.",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    }
+  ]
+}
